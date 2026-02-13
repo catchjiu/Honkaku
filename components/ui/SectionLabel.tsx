@@ -11,7 +11,7 @@ type Props = {
 export function SectionLabel({ children, className = "" }: Props) {
   return (
     <p
-      className={`font-sans text-xs font-medium tracking-widest text-foreground-muted ${className}`}
+      className={`font-sans text-[11px] font-medium tracking-[0.2em] uppercase text-foreground-muted ${className}`}
     >
       {children}
     </p>

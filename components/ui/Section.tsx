@@ -8,9 +8,9 @@ type Props = {
 };
 
 const sizeStyles = {
-  default: "py-16 md:py-20 lg:py-24",
-  narrow: "py-12 md:py-16 lg:py-20",
-  wide: "py-20 md:py-24 lg:py-32",
+  default: "py-24 md:py-32 lg:py-40",
+  narrow: "py-20 md:py-28 lg:py-36",
+  wide: "py-32 md:py-40 lg:py-48",
 };
 
 /**

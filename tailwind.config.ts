@@ -1,10 +1,9 @@
 import type { Config } from "tailwindcss";
 
 /**
- * KH Tattoo — Tailwind Configuration
- * Muted luxury palette: stark blacks, gallery whites, subtle slate grays.
- * Tailwind v4 prefers @theme in CSS; this config extends for content paths
- * and any JS-based overrides. Primary design tokens live in globals.css.
+ * Honkaku Tattoo Studio — Art Gallery × Luxury Watch
+ * Design tokens live in globals.css; this config extends for content paths
+ * and JS-based overrides.
  */
 const config: Config = {
   content: [
@@ -12,25 +11,24 @@ const config: Config = {
     "./components/**/*.{ts,tsx}",
     "./lib/**/*.{ts,tsx}",
   ],
-  darkMode: "class",
+  darkMode: ["class", '[data-theme="dark"]'],
   theme: {
     extend: {
       colors: {
-        // Stark blacks & gallery whites
-        ink: {
-          DEFAULT: "#0a0a0a",
-          soft: "#141414",
-          muted: "#1a1a1a",
+        ivory: {
+          DEFAULT: "#fafaf9",
+          warm: "#f5f4f0",
+          muted: "#ebe9e4",
         },
-        paper: {
-          DEFAULT: "#fafafa",
-          warm: "#f5f5f0",
-          cold: "#f8f8f8",
+        charcoal: {
+          DEFAULT: "#0c0c0c",
+          soft: "#1a1a1a",
+          muted: "#2d2d2d",
         },
-        slate: {
-          850: "#1e293b",
-          925: "#0f172a",
-          950: "#020617",
+        bronze: {
+          DEFAULT: "#8b7355",
+          muted: "rgba(139, 115, 85, 0.12)",
+          subtle: "rgba(139, 115, 85, 0.06)",
         },
       },
       fontFamily: {
@@ -39,9 +37,9 @@ const config: Config = {
         display: ["var(--font-display)", "var(--font-serif)", "serif"],
       },
       letterSpacing: {
-        "tracking-tightest": "-0.05em",
-        "tracking-widest": "0.2em",
-        "tracking-wider": "0.15em",
+        "tracking-tightest": "-0.03em",
+        "tracking-widest": "0.25em",
+        "tracking-wider": "0.2em",
       },
       animation: {
         "fade-in": "fadeIn 0.6s ease-out forwards",
@@ -53,7 +51,7 @@ const config: Config = {
           "100%": { opacity: "1" },
         },
         fadeInUp: {
-          "0%": { opacity: "0", transform: "translateY(24px)" },
+          "0%": { opacity: "0", transform: "translateY(20px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
       },

@@ -43,12 +43,12 @@ export function Lightbox({ src, alt, isOpen, onClose }: Props) {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] as const }}
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-ink/95 backdrop-blur-sm"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-charcoal/95 backdrop-blur-sm"
           onClick={onClose}
         >
           <button
             onClick={onClose}
-            className="absolute right-6 top-6 z-10 p-2 text-foreground-muted transition-colors hover:text-foreground"
+            className="absolute right-8 top-8 z-10 p-2 text-white/70 transition-colors hover:text-white"
             aria-label="Close"
           >
             <X size={24} strokeWidth={1.5} />

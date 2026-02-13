@@ -22,14 +22,14 @@ export default async function ArtistsPage() {
   });
 
   return (
-    <div className="mx-auto max-w-7xl px-6">
+    <div className="mx-auto max-w-6xl px-8">
       <Section size="narrow">
         <ArtistsPageClient>
           <SectionLabel>Studio</SectionLabel>
-          <SectionTitle as="h1" className="mt-2">
+          <SectionTitle as="h1" className="mt-3">
             Our Artists
           </SectionTitle>
-          <p className="mt-4 max-w-2xl text-foreground-muted">
+          <p className="mt-6 max-w-xl text-[17px] leading-relaxed text-foreground-muted">
             Meet the master artists behind our studio. Each brings a unique
             vision and decades of experience to every piece.
           </p>
@@ -38,25 +38,25 @@ export default async function ArtistsPage() {
 
       <Section>
         {artists.length === 0 ? (
-          <p className="text-center text-foreground-muted">
+          <p className="py-20 text-center text-foreground-muted">
             No artists yet. Check back soon.
           </p>
         ) : (
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-3">
             {artists.map((artist) => (
               <Link
                 key={artist.id}
                 href={`/artists/${artist.slug}`}
-                className="group block overflow-hidden rounded-sm border border-border bg-card transition-colors hover:border-accent hover:bg-card-hover"
+                className="group block overflow-hidden bg-ivory-warm transition-colors hover:bg-ivory-muted"
               >
-                <div className="relative aspect-[3/4] overflow-hidden">
+                <div className="relative aspect-[4/5] overflow-hidden">
                   {artist.avatarUrl ? (
                     <Image
                       src={artist.avatarUrl}
                       alt={artist.name}
                       fill
                       sizes="(max-width: 768px) 100vw, 33vw"
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
                     />
                   ) : (
                     <Image
@@ -64,20 +64,19 @@ export default async function ArtistsPage() {
                       alt={artist.name}
                       fill
                       sizes="(max-width: 768px) 100vw, 33vw"
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
                     />
                   )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-transparent opacity-60" />
                 </div>
-                <div className="relative p-6">
-                  <h2 className="font-serif text-xl font-medium text-foreground">
+                <div className="border-t border-border p-6">
+                  <h2 className="font-serif text-xl font-medium tracking-tight text-foreground">
                     {artist.name}
                   </h2>
-                  <p className="mt-1 text-sm text-accent">
+                  <p className="mt-1 text-[13px] tracking-wide text-accent">
                     {artist.specialty || "Tattoo Artist"}
                   </p>
                   {igHandle(artist.instagramUrl) && (
-                    <p className="mt-3 text-sm text-foreground-muted">
+                    <p className="mt-3 text-[13px] text-foreground-muted">
                       @{igHandle(artist.instagramUrl)}
                     </p>
                   )}

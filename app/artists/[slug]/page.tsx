@@ -3,7 +3,6 @@ import { prisma } from "@/lib/prisma";
 export const dynamic = "force-dynamic";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
 import { GalleryGrid } from "@/components/gallery/GalleryGrid";
 
 function igHandle(url: string | null): string | null {
@@ -38,18 +37,17 @@ export default async function ArtistGalleryPage({
   }));
 
   return (
-    <div className="mx-auto max-w-7xl px-6 py-24">
+    <div className="mx-auto max-w-6xl px-8 py-24 md:py-32">
       <Link
         href="/artists"
-        className="mb-8 inline-flex items-center gap-2 text-sm text-[var(--muted)] hover:text-[var(--accent-gold)]"
+        className="mb-12 inline-block text-[13px] font-medium tracking-[0.12em] uppercase text-foreground-muted transition-colors hover:text-foreground"
       >
-        <ArrowLeft size={16} strokeWidth={1.5} />
-        Back to Artists
+        ← Back to Artists
       </Link>
 
-      <div className="mb-12 flex flex-col gap-6 sm:flex-row sm:items-end sm:gap-12">
+      <div className="mb-16 flex flex-col gap-8 sm:flex-row sm:items-end sm:gap-12">
         {artist.avatarUrl && (
-          <div className="h-32 w-32 shrink-0 overflow-hidden rounded-sm">
+          <div className="h-36 w-36 shrink-0 overflow-hidden bg-ivory-muted">
             <img
               src={artist.avatarUrl}
               alt={artist.name}
@@ -58,16 +56,20 @@ export default async function ArtistGalleryPage({
           </div>
         )}
         <div>
-          <h1 className="font-serif text-4xl font-medium">{artist.name}</h1>
+          <h1 className="font-serif text-4xl font-medium tracking-tight text-foreground md:text-5xl">
+            {artist.name}
+          </h1>
           {artist.specialty && (
-            <p className="mt-2 text-[var(--accent-gold)]">{artist.specialty}</p>
+            <p className="mt-2 text-[15px] tracking-wide text-accent">
+              {artist.specialty}
+            </p>
           )}
           {igHandle(artist.instagramUrl) && (
             <a
               href={`https://instagram.com/${igHandle(artist.instagramUrl)}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-2 inline-block text-sm text-[var(--muted)] hover:text-[var(--accent-gold)]"
+              className="mt-3 inline-block text-[14px] text-foreground-muted transition-colors hover:text-accent"
             >
               @{igHandle(artist.instagramUrl)}
             </a>
@@ -75,14 +77,17 @@ export default async function ArtistGalleryPage({
         </div>
       </div>
 
-      <h2 className="font-serif text-2xl font-medium text-[var(--foreground)]">
+      <p className="text-[11px] font-medium tracking-[0.2em] uppercase text-foreground-muted">
         Portfolio
-      </h2>
-      <p className="mt-2 text-[var(--muted)]">
-        {artworks?.length ?? 0} piece{(artworks?.length ?? 0) !== 1 ? "s" : ""} in this collection. Hover or tap to reveal color.
+      </p>
+      <p className="mt-2 text-[15px] text-foreground-muted">
+        {artworks?.length ?? 0} piece{(artworks?.length ?? 0) !== 1 ? "s" : ""}{" "}
+        in this collection.
       </p>
 
-      <GalleryGrid artworks={artworks} showArtistName={false} />
+      <div className="mt-12">
+        <GalleryGrid artworks={artworks} showArtistName={false} />
+      </div>
     </div>
   );
 }

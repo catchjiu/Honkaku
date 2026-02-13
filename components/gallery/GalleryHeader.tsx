@@ -7,10 +7,10 @@ export function GalleryHeader() {
   return (
     <FadeInUp>
       <SectionLabel>Portfolio</SectionLabel>
-      <SectionTitle as="h1" className="mt-2">
+      <SectionTitle as="h1" className="mt-3">
         Gallery
       </SectionTitle>
-      <p className="mt-4 max-w-2xl text-foreground-muted">
+      <p className="mt-6 max-w-xl text-[17px] leading-relaxed text-foreground-muted">
         Browse our portfolio of tattoo artistry. Click any image to view in
         full.
       </p>

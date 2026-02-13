@@ -18,26 +18,26 @@ export function Navbar() {
 
   return (
     <motion.header
-      initial={{ y: -20, opacity: 0 }}
+      initial={{ y: -16, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-ink/90 backdrop-blur-md"
+      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+      className="fixed top-0 left-0 right-0 z-50 border-b border-border/80 bg-background/80 backdrop-blur-xl"
     >
-      <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
+      <nav className="mx-auto flex h-20 max-w-6xl items-center justify-between px-8">
         <Link
           href="/"
-          className="font-serif text-xl font-medium tracking-wide text-foreground transition-colors hover:text-accent"
+          className="font-serif text-xl font-medium tracking-[0.02em] text-foreground transition-colors hover:text-accent"
         >
-          Honkaku Tattoo Studio
+          Honkaku
         </Link>
 
         {/* Desktop nav */}
-        <ul className="hidden items-center gap-8 md:flex">
+        <ul className="hidden items-center gap-12 md:flex">
           {navLinks.map((link) => (
             <li key={link.href}>
               <Link
                 href={link.href}
-                className="text-sm font-medium text-foreground-muted transition-colors hover:text-accent"
+                className="text-[13px] font-medium tracking-[0.12em] uppercase text-foreground-muted transition-colors hover:text-foreground"
               >
                 {link.label}
               </Link>
@@ -51,7 +51,11 @@ export function Navbar() {
           className="flex p-2 text-foreground md:hidden"
           aria-label="Toggle menu"
         >
-          {mobileOpen ? <X size={24} strokeWidth={1.5} /> : <Menu size={24} strokeWidth={1.5} />}
+          {mobileOpen ? (
+            <X size={22} strokeWidth={1.5} />
+          ) : (
+            <Menu size={22} strokeWidth={1.5} />
+          )}
         </button>
       </nav>
 
@@ -62,16 +66,16 @@ export function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="overflow-hidden border-t border-border bg-ink md:hidden"
+            transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+            className="overflow-hidden border-t border-border bg-background md:hidden"
           >
-            <ul className="flex flex-col gap-1 px-6 py-4">
+            <ul className="flex flex-col gap-1 px-8 py-6">
               {navLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
-                    className="block py-3 text-sm font-medium text-foreground-muted transition-colors hover:text-accent"
+                    className="block py-3 text-sm font-medium tracking-wide text-foreground-muted transition-colors hover:text-foreground"
                   >
                     {link.label}
                   </Link>

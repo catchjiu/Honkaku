@@ -22,7 +22,7 @@ export function FadeInUp({
   duration = 0.8,
   once = true,
   amount = 0.15,
-  y = 24,
+  y = 20,
 }: Props) {
   return (
     <motion.div

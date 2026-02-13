@@ -3,7 +3,6 @@ import { prisma } from "@/lib/prisma";
 export const dynamic = "force-dynamic";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
 
 function BlogContent({ content }: { content: string }) {
   const isHtml = /<[a-z][\s\S]*>/i.test(content);
@@ -13,12 +12,21 @@ function BlogContent({ content }: { content: string }) {
         .replace(/\n/g, "<br />")
         .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
         .replace(/\*(.*?)\*/g, "<em>$1</em>")
-        .replace(/^### (.*$)/gm, "<h3 class='font-serif text-xl font-medium mt-6 mb-2'>$1</h3>")
-        .replace(/^## (.*$)/gm, "<h2 class='font-serif text-2xl font-medium mt-8 mb-2'>$1</h2>")
-        .replace(/^# (.*$)/gm, "<h1 class='font-serif text-3xl font-medium mt-8 mb-2'>$1</h1>");
+        .replace(
+          /^### (.*$)/gm,
+          "<h3 class='font-serif text-xl font-medium mt-8 mb-3 text-foreground'>$1</h3>"
+        )
+        .replace(
+          /^## (.*$)/gm,
+          "<h2 class='font-serif text-2xl font-medium mt-10 mb-3 text-foreground'>$1</h2>"
+        )
+        .replace(
+          /^# (.*$)/gm,
+          "<h1 class='font-serif text-3xl font-medium mt-10 mb-3 text-foreground'>$1</h1>"
+        );
   return (
     <div
-      className="prose prose-invert mt-8 max-w-none [&_img]:rounded [&_iframe]:aspect-video [&_iframe]:w-full [&_iframe]:max-w-2xl"
+      className="prose prose-neutral mt-10 max-w-none text-foreground [&_img]:rounded [&_iframe]:aspect-video [&_iframe]:w-full [&_iframe]:max-w-2xl [&_p]:text-[17px] [&_p]:leading-relaxed [&_p]:text-foreground-muted"
       dangerouslySetInnerHTML={{ __html: html }}
     />
   );
@@ -42,26 +50,27 @@ export default async function BlogPostPage({
   if (!post) notFound();
 
   return (
-    <div className="mx-auto max-w-3xl px-6 py-24">
+    <div className="mx-auto max-w-2xl px-8 py-24 md:py-32">
       <Link
         href="/blog"
-        className="mb-8 inline-flex items-center gap-2 text-sm text-[var(--muted)] hover:text-[var(--accent-gold)]"
+        className="mb-12 inline-block text-[13px] font-medium tracking-[0.12em] uppercase text-foreground-muted transition-colors hover:text-foreground"
       >
-        <ArrowLeft size={16} strokeWidth={1.5} />
-        Back to Blog
+        ← Back to Blog
       </Link>
 
       <article>
         {post.category && (
-          <span className="text-sm uppercase tracking-wider text-[var(--accent-gold)]">
+          <span className="text-[11px] font-medium tracking-[0.2em] uppercase text-accent">
             {post.category}
           </span>
         )}
-        <h1 className="mt-2 font-serif text-4xl font-medium">{post.title}</h1>
+        <h1 className="mt-3 font-serif text-4xl font-medium tracking-tight text-foreground md:text-5xl">
+          {post.title}
+        </h1>
         {post.publishedAt && (
           <time
             dateTime={post.publishedAt.toISOString()}
-            className="mt-2 block text-[var(--muted)]"
+            className="mt-4 block text-[14px] text-foreground-muted"
           >
             {post.publishedAt.toLocaleDateString("en-US", {
               year: "numeric",
@@ -72,7 +81,7 @@ export default async function BlogPostPage({
         )}
 
         {post.coverImageUrl && (
-          <div className="mt-8 aspect-[3/2] overflow-hidden rounded-sm">
+          <div className="mt-10 aspect-[3/2] overflow-hidden bg-ivory-muted">
             <img
               src={post.coverImageUrl}
               alt=""
