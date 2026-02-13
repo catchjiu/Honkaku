@@ -6,7 +6,7 @@ if [ -n "$DATABASE_URL" ]; then
   echo "Waiting for database..."
   sleep 5
   echo "Running migrations..."
-  npx prisma migrate deploy
+  node ./node_modules/prisma/build/index.js migrate deploy
   echo "Migrations complete."
 fi
 
