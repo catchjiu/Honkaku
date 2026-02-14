@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { Lightbox } from "@/components/ui";
 import { FadeInUp } from "@/components/ui/motion";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
 function getArtistName(item: { artists?: unknown }): string {
   const a = item.artists;
@@ -29,6 +30,7 @@ type Props = {
 };
 
 export function GalleryGrid({ artworks, showArtistName = true }: Props) {
+  const { t } = useLanguage();
   const [lightboxItem, setLightboxItem] = useState<Artwork | null>(null);
 
   return (
@@ -36,7 +38,7 @@ export function GalleryGrid({ artworks, showArtistName = true }: Props) {
       <div className="mt-20 columns-2 gap-8 sm:columns-3 lg:columns-4">
         {artworks.length === 0 ? (
           <p className="col-span-full py-20 text-center text-foreground-muted">
-            No artwork yet. Check back soon.
+            {t("gallery.noArtwork")}
           </p>
         ) : (
           artworks.map((item, i) => (
@@ -55,7 +57,7 @@ export function GalleryGrid({ artworks, showArtistName = true }: Props) {
                   <div className="relative aspect-[3/4] overflow-hidden bg-card-hover">
                     <Image
                       src={item.image_url}
-                      alt={item.title || "Artwork"}
+                      alt={item.title || t("gallery.artwork")}
                       fill
                       sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                       className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]"
@@ -65,7 +67,7 @@ export function GalleryGrid({ artworks, showArtistName = true }: Props) {
                   </div>
                   <div className="mt-4">
                     <div className="font-serif text-[15px] font-medium text-foreground">
-                      {item.title || "Untitled"}
+                      {item.title || t("gallery.untitled")}
                     </div>
                     {showArtistName && (
                       <div className="mt-1 text-[13px] text-foreground-muted">
@@ -90,7 +92,7 @@ export function GalleryGrid({ artworks, showArtistName = true }: Props) {
       {lightboxItem && (
         <Lightbox
           src={lightboxItem.image_url}
-          alt={lightboxItem.title || "Artwork"}
+          alt={lightboxItem.title || t("gallery.artwork")}
           isOpen={!!lightboxItem}
           onClose={() => setLightboxItem(null)}
         />

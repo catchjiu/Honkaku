@@ -3,6 +3,7 @@
 import { useState, useRef } from "react";
 import { Upload, X } from "lucide-react";
 import { uploadBookingReference } from "@/app/contact/actions";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
 type Props = {
   value: string | null;
@@ -10,6 +11,7 @@ type Props = {
 };
 
 export function BookingReferenceUpload({ value, onChange }: Props) {
+  const { t } = useLanguage();
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -51,20 +53,20 @@ export function BookingReferenceUpload({ value, onChange }: Props) {
           className="flex min-h-[80px] min-w-[120px] flex-col items-center justify-center gap-2 rounded-sm border-2 border-dashed border-border bg-card px-4 py-3 text-sm text-foreground-muted transition hover:border-accent hover:text-accent disabled:opacity-50"
         >
           <Upload size={24} strokeWidth={1.5} />
-          {uploading ? "Uploading…" : "Upload photo"}
+          {uploading ? t("booking.uploading") : t("booking.uploadPhoto")}
         </button>
         {value && (
           <div className="relative">
             <img
               src={value}
-              alt="Reference preview"
+              alt={t("booking.referencePreview")}
               className="max-h-24 max-w-32 rounded-md object-contain"
             />
             <button
               type="button"
               onClick={() => onChange(null)}
               className="absolute -right-2 -top-2 rounded-full bg-[var(--accent-crimson)] p-1 text-white hover:opacity-90"
-              aria-label="Remove"
+              aria-label={t("booking.remove")}
             >
               <X size={12} />
             </button>
@@ -72,7 +74,7 @@ export function BookingReferenceUpload({ value, onChange }: Props) {
         )}
       </div>
       <p className="mt-2 text-xs text-foreground-muted">
-        Optional. Any image ratio is fine.
+        {t("booking.optionalNote")}
       </p>
       {error && (
         <p className="mt-2 text-sm text-[var(--accent-crimson)]">{error}</p>

@@ -3,15 +3,18 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Instagram, MapPin } from "lucide-react";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
 const footerLinks = [
-  { href: "/artists", label: "Artists" },
-  { href: "/gallery", label: "Gallery" },
-  { href: "/blog", label: "Blog" },
-  { href: "/contact", label: "Book a Session" },
+  { href: "/artists", labelKey: "nav.artists" },
+  { href: "/gallery", labelKey: "nav.gallery" },
+  { href: "/blog", labelKey: "nav.blog" },
+  { href: "/contact", labelKey: "footer.bookSession" },
 ];
 
 export function Footer() {
+  const { t } = useLanguage();
+
   return (
     <motion.footer
       initial={{ opacity: 0 }}
@@ -31,15 +34,14 @@ export function Footer() {
               Honkaku
             </Link>
             <p className="mt-6 max-w-xs text-[15px] leading-relaxed text-foreground-muted">
-              Authentic traditional Japanese artistry meets contemporary ink.
-              Kaohsiung.
+              {t("footer.tagline")}
             </p>
           </div>
 
           {/* Links */}
           <div>
             <h4 className="mb-6 text-[11px] font-medium tracking-[0.2em] uppercase text-foreground-muted">
-              Explore
+              {t("footer.explore")}
             </h4>
             <ul className="space-y-4">
               {footerLinks.map((link) => (
@@ -48,7 +50,7 @@ export function Footer() {
                     href={link.href}
                     className="text-[15px] text-foreground-muted transition-colors hover:text-foreground"
                   >
-                    {link.label}
+                    {t(link.labelKey)}
                   </Link>
                 </li>
               ))}
@@ -58,7 +60,7 @@ export function Footer() {
           {/* Social */}
           <div>
             <h4 className="mb-6 text-[11px] font-medium tracking-[0.2em] uppercase text-foreground-muted">
-              Connect
+              {t("footer.connect")}
             </h4>
             <div className="space-y-4">
               <a
@@ -72,23 +74,14 @@ export function Footer() {
               </a>
               <p className="flex items-start gap-3 text-[15px] text-foreground-muted">
                 <MapPin size={18} strokeWidth={1.5} className="mt-0.5 shrink-0" />
-                <span
-                  className="font-sans"
-                  style={{
-                    fontFamily:
-                      '"PingFang TC", "Microsoft JhengHei", "Noto Sans TC", "Helvetica Neue", sans-serif',
-                  fontFeatureSettings: '"locl"',
-                }}
-                >
-                  前金區自強一路46號2樓
-                </span>
+                前金區自強一路46號2樓
               </p>
             </div>
           </div>
         </div>
 
         <div className="mt-20 border-t border-border pt-8 text-center text-[12px] tracking-wide text-foreground-subtle">
-          © {new Date().getFullYear()} Honkaku Tattoo Studio
+          © {new Date().getFullYear()} {t("footer.copyright")}
         </div>
       </div>
     </motion.footer>

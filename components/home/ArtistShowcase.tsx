@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArtistAvatar } from "@/components/ui/ArtistAvatar";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
 type Artist = {
   id: string;
@@ -17,6 +18,7 @@ type Props = {
 };
 
 export function ArtistShowcase({ artists }: Props) {
+  const { t } = useLanguage();
   const displayArtists =
     artists.length > 0
       ? artists
@@ -55,14 +57,13 @@ export function ArtistShowcase({ artists }: Props) {
           className="mb-20"
         >
           <p className="text-[11px] font-medium tracking-[0.25em] uppercase text-foreground-muted">
-            Studio
+            {t("artistShowcase.label")}
           </p>
           <h2 className="mt-3 font-serif text-4xl font-medium tracking-tight text-foreground md:text-5xl lg:text-6xl">
-            Our Artists
+            {t("artistShowcase.title")}
           </h2>
           <p className="mt-6 max-w-xl text-[17px] leading-relaxed text-foreground-muted">
-            Each artist brings a unique vision and decades of experience to every
-            piece.
+            {t("artistShowcase.description")}
           </p>
         </motion.div>
 
@@ -90,10 +91,10 @@ export function ArtistShowcase({ artists }: Props) {
                       {artist.name}
                     </h3>
                     <p className="mt-1 text-[13px] tracking-wide text-accent">
-                      {artist.specialty || "Tattoo Artist"}
+                      {artist.specialty || t("artistShowcase.tattooArtist")}
                     </p>
                     <span className="mt-4 inline-block text-[12px] font-medium tracking-[0.15em] uppercase text-foreground-muted transition-colors group-hover:text-accent">
-                      View Portfolio →
+                      {t("artistShowcase.viewPortfolio")}
                     </span>
                   </div>
                 </div>
@@ -112,7 +113,7 @@ export function ArtistShowcase({ artists }: Props) {
             href="/artists"
             className="inline-block border-b border-accent pb-1 text-[13px] font-medium tracking-[0.15em] uppercase text-accent transition-colors hover:text-foreground"
           >
-            View All Artists
+            {t("artistShowcase.viewAll")}
           </Link>
         </motion.div>
       </div>

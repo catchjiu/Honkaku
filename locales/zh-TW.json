@@ -1,0 +1,149 @@
+{
+  "nav": {
+    "home": "首頁",
+    "artists": "藝術家",
+    "gallery": "作品集",
+    "blog": "部落格",
+    "book": "預約"
+  },
+  "hero": {
+    "location": "高雄",
+    "tagline": "傳統與當代設計的交匯。大師級刺青藝術。",
+    "bookSession": "預約諮詢",
+    "viewGallery": "瀏覽作品"
+  },
+  "footer": {
+    "tagline": "正宗日式傳統刺青藝術與當代墨藝。高雄。",
+    "explore": "探索",
+    "connect": "聯絡我們",
+    "bookSession": "預約諮詢",
+    "copyright": "Honkaku Tattoo Studio"
+  },
+  "artistShowcase": {
+    "label": "工作室",
+    "title": "我們的藝術家",
+    "description": "每位藝術家都以獨特的視野與數十年經驗，為每件作品注入靈魂。",
+    "viewPortfolio": "查看作品集 →",
+    "viewAll": "查看所有藝術家",
+    "tattooArtist": "刺青師"
+  },
+  "bookingCTA": {
+    "label": "預約諮詢",
+    "title": "預約您的",
+    "consultation": "諮詢",
+    "description": "我們的多步驟預約表單幫助我們了解您的想法。分享您的構想，我們將一起打造獨一無二的作品。",
+    "startJourney": "開始您的旅程"
+  },
+  "contact": {
+    "label": "預約諮詢",
+    "title": "預約諮詢",
+    "description": "分享您的想法，我們將一起打造獨一無二的作品。我們的多步驟表單幫助我們了解您的構想。",
+    "whatToExpect": "預期流程",
+    "expect1": "我們將在 24–48 小時內回覆",
+    "expect2": "諮詢可親臨或視訊進行",
+    "expect3": "訂金可保留您的時段",
+    "expect4": "請攜帶參考圖片至諮詢",
+    "contactTitle": "聯絡方式",
+    "contactDm": "想直接聯繫？請在 Instagram 私訊我們"
+  },
+  "booking": {
+    "step1": "您的資料",
+    "step2": "您的構想",
+    "step3": "偏好",
+    "step4": "確認",
+    "step1Title": "步驟 1 — 您的資料",
+    "step2Title": "步驟 2 — 您的構想",
+    "step3Title": "步驟 3 — 偏好",
+    "step4Title": "步驟 4 — 確認並送出",
+    "name": "姓名",
+    "email": "電子信箱",
+    "phone": "電話",
+    "style": "風格",
+    "selectStyle": "選擇風格",
+    "placement": "部位 — 選擇身體區域",
+    "placementPlaceholder": "補充說明（例如：內側手臂、上背）",
+    "size": "尺寸",
+    "selectSize": "選擇尺寸",
+    "describeIdea": "描述您的構想",
+    "describePlaceholder": "告訴我們您的刺青構想、參考圖片或靈感來源...",
+    "referencePhoto": "參考圖片",
+    "uploadPhoto": "上傳圖片",
+    "uploading": "上傳中…",
+    "optionalNote": "選填。任何圖片比例皆可。",
+    "referencePreview": "參考預覽",
+    "remove": "移除",
+    "preferredArtist": "偏好藝術家",
+    "noPreference": "無偏好",
+    "whenBook": "希望預約的時間？",
+    "whenPlaceholder": "例如：下個月、時間彈性",
+    "reviewSubmit": "請確認您的資料後送出。我們將與您聯繫確認時段。",
+    "submit": "送出預約申請",
+    "back": "上一步",
+    "next": "下一步",
+    "thankYou": "感謝您",
+    "received": "我們已收到您的預約申請。將在 24–48 小時內與您聯繫。"
+  },
+  "styles": {
+    "Traditional": "傳統",
+    "Fine-line": "細線",
+    "Realism": "寫實",
+    "Blackwork": "黑灰",
+    "Japanese": "日式",
+    "Neo-traditional": "新傳統",
+    "Other": "其他"
+  },
+  "sizes": {
+    "Small (under 1 hour)": "小（1 小時內）",
+    "Medium (1–3 hours)": "中（1–3 小時）",
+    "Large (half day)": "大（半天）",
+    "Full sleeve / day": "全袖 / 整天"
+  },
+  "bodyRegions": {
+    "head": "頭部 / 頸部",
+    "chest": "胸部",
+    "arm-left": "左臂",
+    "arm-right": "右臂",
+    "stomach": "腹部 / 肋骨",
+    "back": "背部",
+    "leg-left": "左腿",
+    "leg-right": "右腿",
+    "hand-left": "左手",
+    "hand-right": "右手",
+    "foot-left": "左腳",
+    "foot-right": "右腳"
+  },
+  "bodySelected": "已選：",
+  "artists": {
+    "label": "工作室",
+    "title": "我們的藝術家",
+    "description": "認識我們工作室的大師級藝術家。每位都以獨特的視野與數十年經驗，為每件作品注入靈魂。",
+    "noArtists": "尚無藝術家。敬請期待。",
+    "tattooArtist": "刺青師"
+  },
+  "artistDetail": {
+    "backToArtists": "← 返回藝術家",
+    "portfolio": "作品集",
+    "piece": "件",
+    "pieces": "件",
+    "inThisCollection": "在此作品集中。"
+  },
+  "gallery": {
+    "label": "作品集",
+    "title": "作品集",
+    "description": "瀏覽我們的刺青作品。點擊任一圖片可全螢幕檢視。",
+    "noArtwork": "尚無作品。敬請期待。",
+    "untitled": "無題",
+    "artwork": "作品"
+  },
+  "blog": {
+    "label": "工作室",
+    "title": "部落格",
+    "description": "工作室動態與保養須知。",
+    "noPosts": "尚無文章。敬請期待。",
+    "readMore": "閱讀更多 →"
+  },
+  "metadata": {
+    "title": "Honkaku Tattoo Studio | 即將開幕",
+    "description": "Honkaku Tattoo Studio — 正宗日式傳統刺青藝術與當代墨藝。即將開幕。"
+  }
+}

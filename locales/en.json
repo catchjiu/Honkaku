@@ -1,0 +1,149 @@
+{
+  "nav": {
+    "home": "Home",
+    "artists": "Artists",
+    "gallery": "Gallery",
+    "blog": "Blog",
+    "book": "Book"
+  },
+  "hero": {
+    "location": "Kaohsiung",
+    "tagline": "Where tradition meets contemporary design. Premium tattoo artistry by master artists.",
+    "bookSession": "Book a Session",
+    "viewGallery": "View Gallery"
+  },
+  "footer": {
+    "tagline": "Authentic traditional Japanese artistry meets contemporary ink. Kaohsiung.",
+    "explore": "Explore",
+    "connect": "Connect",
+    "bookSession": "Book a Session",
+    "copyright": "Honkaku Tattoo Studio"
+  },
+  "artistShowcase": {
+    "label": "Studio",
+    "title": "Our Artists",
+    "description": "Each artist brings a unique vision and decades of experience to every piece.",
+    "viewPortfolio": "View Portfolio →",
+    "viewAll": "View All Artists",
+    "tattooArtist": "Tattoo Artist"
+  },
+  "bookingCTA": {
+    "label": "Concierge",
+    "title": "Book Your",
+    "consultation": "Consultation",
+    "description": "Our multi-step booking form helps us understand your vision. Share your ideas and we'll craft something extraordinary together.",
+    "startJourney": "Start Your Journey"
+  },
+  "contact": {
+    "label": "Concierge",
+    "title": "Book a Session",
+    "description": "Share your vision and we'll craft something extraordinary together. Our multi-step form helps us understand your ideas.",
+    "whatToExpect": "What to expect",
+    "expect1": "We'll respond within 24–48 hours",
+    "expect2": "Consultation can be in-person or via video",
+    "expect3": "A deposit secures your spot",
+    "expect4": "Bring reference images to your session",
+    "contactTitle": "Contact",
+    "contactDm": "Prefer to reach out directly? DM us on Instagram"
+  },
+  "booking": {
+    "step1": "Your details",
+    "step2": "Your vision",
+    "step3": "Preferences",
+    "step4": "Confirm",
+    "step1Title": "Step 1 — Your details",
+    "step2Title": "Step 2 — Your vision",
+    "step3Title": "Step 3 — Preferences",
+    "step4Title": "Step 4 — Confirm & submit",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "style": "Style",
+    "selectStyle": "Select a style",
+    "placement": "Placement — select body area(s)",
+    "placementPlaceholder": "Additional notes (e.g. inner arm, upper back)",
+    "size": "Size",
+    "selectSize": "Select size",
+    "describeIdea": "Describe your idea",
+    "describePlaceholder": "Tell us about your tattoo vision, reference images, or inspiration...",
+    "referencePhoto": "Reference photo",
+    "uploadPhoto": "Upload photo",
+    "uploading": "Uploading…",
+    "optionalNote": "Optional. Any image ratio is fine.",
+    "referencePreview": "Reference preview",
+    "remove": "Remove",
+    "preferredArtist": "Preferred artist",
+    "noPreference": "No preference",
+    "whenBook": "When would you like to book?",
+    "whenPlaceholder": "e.g. Next month, flexible",
+    "reviewSubmit": "Review your details and submit. We'll be in touch to confirm your session.",
+    "submit": "Submit booking request",
+    "back": "Back",
+    "next": "Next",
+    "thankYou": "Thank you",
+    "received": "Your booking request has been received. We'll be in touch within 24–48 hours."
+  },
+  "styles": {
+    "Traditional": "Traditional",
+    "Fine-line": "Fine-line",
+    "Realism": "Realism",
+    "Blackwork": "Blackwork",
+    "Japanese": "Japanese",
+    "Neo-traditional": "Neo-traditional",
+    "Other": "Other"
+  },
+  "sizes": {
+    "Small (under 1 hour)": "Small (under 1 hour)",
+    "Medium (1–3 hours)": "Medium (1–3 hours)",
+    "Large (half day)": "Large (half day)",
+    "Full sleeve / day": "Full sleeve / day"
+  },
+  "bodyRegions": {
+    "head": "Head / Neck",
+    "chest": "Chest",
+    "arm-left": "Left Arm",
+    "arm-right": "Right Arm",
+    "stomach": "Stomach / Ribs",
+    "back": "Back",
+    "leg-left": "Left Leg",
+    "leg-right": "Right Leg",
+    "hand-left": "Left Hand",
+    "hand-right": "Right Hand",
+    "foot-left": "Left Foot",
+    "foot-right": "Right Foot"
+  },
+  "bodySelected": "Selected:",
+  "artists": {
+    "label": "Studio",
+    "title": "Our Artists",
+    "description": "Meet the master artists behind our studio. Each brings a unique vision and decades of experience to every piece.",
+    "noArtists": "No artists yet. Check back soon.",
+    "tattooArtist": "Tattoo Artist"
+  },
+  "artistDetail": {
+    "backToArtists": "← Back to Artists",
+    "portfolio": "Portfolio",
+    "piece": "piece",
+    "pieces": "pieces",
+    "inThisCollection": "in this collection."
+  },
+  "gallery": {
+    "label": "Portfolio",
+    "title": "Gallery",
+    "description": "Browse our portfolio of tattoo artistry. Click any image to view in full.",
+    "noArtwork": "No artwork yet. Check back soon.",
+    "untitled": "Untitled",
+    "artwork": "Artwork"
+  },
+  "blog": {
+    "label": "Studio",
+    "title": "Blog",
+    "description": "Studio news and aftercare tips.",
+    "noPosts": "No posts yet. Check back soon.",
+    "readMore": "Read more →"
+  },
+  "metadata": {
+    "title": "Honkaku Tattoo Studio | Coming Soon",
+    "description": "Honkaku Tattoo Studio — Authentic traditional Japanese artistry meets contemporary ink. Coming soon."
+  }
+}

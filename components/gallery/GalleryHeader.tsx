@@ -2,17 +2,19 @@
 
 import { SectionLabel, SectionTitle } from "@/components/ui";
 import { FadeInUp } from "@/components/ui/motion";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
 export function GalleryHeader() {
+  const { t } = useLanguage();
+
   return (
     <FadeInUp>
-      <SectionLabel>Portfolio</SectionLabel>
+      <SectionLabel>{t("gallery.label")}</SectionLabel>
       <SectionTitle as="h1" className="mt-3">
-        Gallery
+        {t("gallery.title")}
       </SectionTitle>
       <p className="mt-6 max-w-xl text-[17px] leading-relaxed text-foreground-muted">
-        Browse our portfolio of tattoo artistry. Click any image to view in
-        full.
+        {t("gallery.description")}
       </p>
     </FadeInUp>
   );

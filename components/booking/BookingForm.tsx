@@ -7,12 +7,13 @@ import { submitBooking } from "@/app/contact/actions";
 import { BookingReferenceUpload } from "./BookingReferenceUpload";
 import { BodyMapSelector } from "./BodyMapSelector";
 import { Input, Textarea, Select, FormField, Button } from "@/components/ui";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
 const STEPS = [
-  { id: 1, title: "Your details", key: "details" },
-  { id: 2, title: "Your vision", key: "vision" },
-  { id: 3, title: "Preferences", key: "preferences" },
-  { id: 4, title: "Confirm", key: "confirm" },
+  { id: 1, titleKey: "booking.step1", key: "details" },
+  { id: 2, titleKey: "booking.step2", key: "vision" },
+  { id: 3, titleKey: "booking.step3", key: "preferences" },
+  { id: 4, titleKey: "booking.step4", key: "confirm" },
 ];
 
 const STYLES = ["Traditional", "Fine-line", "Realism", "Blackwork", "Japanese", "Neo-traditional", "Other"];
@@ -23,6 +24,7 @@ type Props = {
 };
 
 export function BookingForm({ artists }: Props) {
+  const { t } = useLanguage();
   const [step, setStep] = useState(1);
   const [error, setError] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
@@ -64,9 +66,9 @@ export function BookingForm({ artists }: Props) {
         className="rounded-sm border border-accent bg-accent-muted p-12 text-center"
       >
         <Check className="mx-auto mb-4 text-accent" size={48} strokeWidth={1.5} />
-        <h2 className="font-serif text-2xl font-medium text-foreground">Thank you</h2>
+        <h2 className="font-serif text-2xl font-medium text-foreground">{t("booking.thankYou")}</h2>
         <p className="mt-2 text-foreground-muted">
-          Your booking request has been received. We&apos;ll be in touch within 24–48 hours.
+          {t("booking.received")}
         </p>
       </motion.div>
     );
@@ -92,7 +94,7 @@ export function BookingForm({ artists }: Props) {
                   {s.id}
                 </span>
               )}
-              <span className="hidden sm:inline">{s.title}</span>
+              <span className="hidden sm:inline">{t(s.titleKey)}</span>
             </button>
             {i < STEPS.length - 1 && (
               <div
@@ -122,17 +124,17 @@ export function BookingForm({ artists }: Props) {
             className="space-y-4"
           >
             <h3 className="font-serif text-lg font-medium text-accent">
-              Step 1 — Your details
+              {t("booking.step1Title")}
             </h3>
             <div className="grid gap-4 sm:grid-cols-2">
-              <FormField label="Name" required>
+              <FormField label={t("booking.name")} required>
                 <Input name="name" required />
               </FormField>
-              <FormField label="Email" required>
+              <FormField label={t("booking.email")} required>
                 <Input name="email" type="email" required />
               </FormField>
             </div>
-            <FormField label="Phone">
+            <FormField label={t("booking.phone")}>
               <Input name="phone" type="tel" />
             </FormField>
           </motion.div>
@@ -147,17 +149,17 @@ export function BookingForm({ artists }: Props) {
             className="space-y-6"
           >
             <h3 className="font-serif text-lg font-medium text-accent">
-              Step 2 — Your vision
+              {t("booking.step2Title")}
             </h3>
-            <FormField label="Style">
+            <FormField label={t("booking.style")}>
               <Select name="style">
-                <option value="">Select a style</option>
+                <option value="">{t("booking.selectStyle")}</option>
                 {STYLES.map((s) => (
-                  <option key={s} value={s}>{s}</option>
+                  <option key={s} value={s}>{t(`styles.${s}`)}</option>
                 ))}
               </Select>
             </FormField>
-            <FormField label="Placement — select body area(s)">
+            <FormField label={t("booking.placement")}>
               <BodyMapSelector
                 value={placementRegions}
                 onChange={setPlacementRegions}
@@ -165,26 +167,26 @@ export function BookingForm({ artists }: Props) {
               />
               <Input
                 name="placement"
-                placeholder="Additional notes (e.g. inner arm, upper back)"
+                placeholder={t("booking.placementPlaceholder")}
                 className="mt-3"
               />
             </FormField>
-            <FormField label="Size">
+            <FormField label={t("booking.size")}>
               <Select name="size">
-                <option value="">Select size</option>
+                <option value="">{t("booking.selectSize")}</option>
                 {SIZES.map((s) => (
-                  <option key={s} value={s}>{s}</option>
+                  <option key={s} value={s}>{t(`sizes.${s}`)}</option>
                 ))}
               </Select>
             </FormField>
-            <FormField label="Describe your idea">
+            <FormField label={t("booking.describeIdea")}>
               <Textarea
                 name="description"
                 rows={4}
-                placeholder="Tell us about your tattoo vision, reference images, or inspiration..."
+                placeholder={t("booking.describePlaceholder")}
               />
             </FormField>
-            <FormField label="Reference photo">
+            <FormField label={t("booking.referencePhoto")}>
               <BookingReferenceUpload value={referenceUrl} onChange={setReferenceUrl} />
             </FormField>
           </motion.div>
@@ -199,20 +201,20 @@ export function BookingForm({ artists }: Props) {
             className="space-y-4"
           >
             <h3 className="font-serif text-lg font-medium text-accent">
-              Step 3 — Preferences
+              {t("booking.step3Title")}
             </h3>
-            <FormField label="Preferred artist">
+            <FormField label={t("booking.preferredArtist")}>
               <Select name="preferred_artist_id">
-                <option value="">No preference</option>
+                <option value="">{t("booking.noPreference")}</option>
                 {artists.map((a) => (
                   <option key={a.id} value={a.id}>{a.name}</option>
                 ))}
               </Select>
             </FormField>
-            <FormField label="When would you like to book?">
+            <FormField label={t("booking.whenBook")}>
               <Input
                 name="preferred_date"
-                placeholder="e.g. Next month, flexible"
+                placeholder={t("booking.whenPlaceholder")}
               />
             </FormField>
           </motion.div>
@@ -227,10 +229,10 @@ export function BookingForm({ artists }: Props) {
             className="space-y-6"
           >
             <h3 className="font-serif text-lg font-medium text-accent">
-              Step 4 — Confirm & submit
+              {t("booking.step4Title")}
             </h3>
             <p className="text-foreground-muted">
-              Review your details and submit. We&apos;ll be in touch to confirm your session.
+              {t("booking.reviewSubmit")}
             </p>
             <Button
               type="submit"
@@ -240,7 +242,7 @@ export function BookingForm({ artists }: Props) {
               className="w-full"
               rightIcon={<PenLine size={20} strokeWidth={1.5} />}
             >
-              Submit booking request
+              {t("booking.submit")}
             </Button>
           </motion.div>
         </div>
@@ -253,7 +255,7 @@ export function BookingForm({ artists }: Props) {
             onClick={() => setStep((s) => Math.max(1, s - 1))}
             disabled={step === 1}
           >
-            Back
+            {t("booking.back")}
           </Button>
           {step < 4 ? (
             <Button
@@ -263,7 +265,7 @@ export function BookingForm({ artists }: Props) {
               onClick={() => setStep((s) => Math.min(4, s + 1))}
               rightIcon={<ChevronRight size={18} strokeWidth={1.5} />}
             >
-              Next
+              {t("booking.next")}
             </Button>
           ) : null}
         </div>

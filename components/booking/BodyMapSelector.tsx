@@ -1,20 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
-const REGIONS = [
-  { id: "head", label: "Head / Neck" },
-  { id: "chest", label: "Chest" },
-  { id: "arm-left", label: "Left Arm" },
-  { id: "arm-right", label: "Right Arm" },
-  { id: "stomach", label: "Stomach / Ribs" },
-  { id: "back", label: "Back" },
-  { id: "leg-left", label: "Left Leg" },
-  { id: "leg-right", label: "Right Leg" },
-  { id: "hand-left", label: "Left Hand" },
-  { id: "hand-right", label: "Right Hand" },
-  { id: "foot-left", label: "Left Foot" },
-  { id: "foot-right", label: "Right Foot" },
+const REGION_IDS = [
+  "head", "chest", "arm-left", "arm-right", "stomach", "back",
+  "leg-left", "leg-right", "hand-left", "hand-right", "foot-left", "foot-right",
 ] as const;
 
 type Props = {
@@ -32,6 +23,7 @@ export function BodyMapSelector({
   onChange,
   maxSelections = 3,
 }: Props) {
+  const { t } = useLanguage();
   const [selected, setSelected] = useState<Set<string>>(new Set(value));
 
   const toggle = (id: string) => {
@@ -139,29 +131,29 @@ export function BodyMapSelector({
 
       {/* Region chips — tap to select */}
       <div className="flex flex-wrap gap-2">
-        {REGIONS.map((region) => {
-          const isSelected = selected.has(region.id);
+        {REGION_IDS.map((id) => {
+          const isSelected = selected.has(id);
           return (
             <button
-              key={region.id}
+              key={id}
               type="button"
-              onClick={() => toggle(region.id)}
+              onClick={() => toggle(id)}
               className={`rounded-sm border px-3 py-1.5 text-xs font-medium transition-colors ${
                 isSelected
                   ? "border-accent bg-accent-muted text-accent"
                   : "border-border text-foreground-muted hover:border-accent/50 hover:text-accent"
               }`}
             >
-              {region.label}
+              {t(`bodyRegions.${id}`)}
             </button>
           );
         })}
       </div>
       {selected.size > 0 && (
         <p className="text-xs text-foreground-muted">
-          Selected:{" "}
+          {t("bodySelected")}{" "}
           {Array.from(selected)
-            .map((id) => REGIONS.find((r) => r.id === id)?.label)
+            .map((id) => t(`bodyRegions.${id}`))
             .join(", ")}
         </p>
       )}

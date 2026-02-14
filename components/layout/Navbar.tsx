@@ -4,17 +4,20 @@ import Link from "next/link";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { useLanguage } from "@/components/providers/LanguageProvider";
+import { LanguageToggle } from "./LanguageToggle";
 
 const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/artists", label: "Artists" },
-  { href: "/gallery", label: "Gallery" },
-  { href: "/blog", label: "Blog" },
-  { href: "/contact", label: "Book" },
+  { href: "/", labelKey: "nav.home" },
+  { href: "/artists", labelKey: "nav.artists" },
+  { href: "/gallery", labelKey: "nav.gallery" },
+  { href: "/blog", labelKey: "nav.blog" },
+  { href: "/contact", labelKey: "nav.book" },
 ];
 
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { t } = useLanguage();
 
   return (
     <motion.header
@@ -32,18 +35,21 @@ export function Navbar() {
         </Link>
 
         {/* Desktop nav */}
-        <ul className="hidden items-center gap-12 md:flex">
-          {navLinks.map((link) => (
-            <li key={link.href}>
-              <Link
-                href={link.href}
-                className="text-[13px] font-medium tracking-[0.12em] uppercase text-foreground-muted transition-colors hover:text-foreground"
-              >
-                {link.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <div className="hidden items-center gap-8 md:flex">
+          <ul className="flex items-center gap-12">
+            {navLinks.map((link) => (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  className="text-[13px] font-medium tracking-[0.12em] uppercase text-foreground-muted transition-colors hover:text-foreground"
+                >
+                  {t(link.labelKey)}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <LanguageToggle />
+        </div>
 
         {/* Mobile menu button */}
         <button
@@ -70,6 +76,9 @@ export function Navbar() {
             className="overflow-hidden border-t border-border bg-background md:hidden"
           >
             <ul className="flex flex-col gap-1 px-8 py-6">
+              <li className="mb-4 flex justify-end">
+                <LanguageToggle />
+              </li>
               {navLinks.map((link) => (
                 <li key={link.href}>
                   <Link
@@ -77,7 +86,7 @@ export function Navbar() {
                     onClick={() => setMobileOpen(false)}
                     className="block py-3 text-sm font-medium tracking-wide text-foreground-muted transition-colors hover:text-foreground"
                   >
-                    {link.label}
+                    {t(link.labelKey)}
                   </Link>
                 </li>
               ))}

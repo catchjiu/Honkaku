@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
 const HERO_IMAGE =
   "https://images.unsplash.com/photo-1568515041317-4c1a7c936ee0?w=1920&q=80";
@@ -10,6 +11,8 @@ const HERO_BLUR =
   "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBEQACEQADAD8A0p//2Q==";
 
 export function HeroSection() {
+  const { t } = useLanguage();
+
   return (
     <section className="relative min-h-[100dvh] overflow-hidden bg-charcoal">
       <div className="absolute inset-0">
@@ -36,7 +39,7 @@ export function HeroSection() {
             transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
             className="mb-6 text-[11px] font-medium tracking-[0.25em] uppercase text-ivory/70"
           >
-            Kaohsiung
+            {t("hero.location")}
           </motion.p>
 
           <motion.h1
@@ -56,8 +59,7 @@ export function HeroSection() {
             transition={{ duration: 0.6, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
             className="mt-10 max-w-md text-[17px] leading-relaxed text-ivory/80"
           >
-            Where tradition meets contemporary design. Premium tattoo artistry by
-            master artists.
+            {t("hero.tagline")}
           </motion.p>
 
           <motion.div
@@ -70,13 +72,13 @@ export function HeroSection() {
               href="/contact"
               className="inline-flex items-center justify-center border border-bronze bg-bronze/10 px-10 py-4 text-[13px] font-medium tracking-[0.15em] uppercase text-bronze transition-colors hover:bg-bronze hover:text-ivory"
             >
-              Book a Session
+              {t("hero.bookSession")}
             </Link>
             <Link
               href="/gallery"
               className="inline-flex items-center justify-center border border-ivory/40 px-10 py-4 text-[13px] font-medium tracking-[0.15em] uppercase text-ivory/90 transition-colors hover:border-ivory hover:text-ivory"
             >
-              View Gallery
+              {t("hero.viewGallery")}
             </Link>
           </motion.div>
         </div>
