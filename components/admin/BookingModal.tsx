@@ -68,7 +68,11 @@ export function BookingModal({ booking, onClose }: BookingModalProps) {
                     className={`mt-2 inline-block rounded-full px-2.5 py-0.5 text-xs font-medium ${
                       booking.status === "pending"
                         ? "bg-[var(--accent-gold)]/30 text-[var(--accent-gold)]"
-                        : "bg-[var(--border)] text-[var(--muted)]"
+                        : booking.status === "scheduled"
+                          ? "bg-blue-500/20 text-blue-400"
+                          : booking.status === "completed"
+                            ? "bg-emerald-500/20 text-emerald-400"
+                            : "bg-[var(--border)] text-[var(--muted)]"
                     }`}
                   >
                     {booking.status}

@@ -8,7 +8,10 @@ export default async function AdminBookingsPage() {
   if (!user) redirect("/admin/login");
 
   const rows = await prisma.bookingRequest.findMany({
-    include: { artist: { select: { name: true } } },
+    include: {
+      artist: { select: { name: true } },
+      references: { take: 1, orderBy: { createdAt: "desc" } },
+    },
     orderBy: { createdAt: "desc" },
   });
 
@@ -21,7 +24,7 @@ export default async function AdminBookingsPage() {
     placement: b.placement,
     size: null,
     description: b.conceptDescription,
-    reference_url: null,
+    reference_url: b.references[0]?.url ?? null,
     preferred_date: null,
     status: b.status.toLowerCase(),
     created_at: b.createdAt.toISOString(),

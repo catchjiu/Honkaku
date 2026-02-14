@@ -160,6 +160,8 @@ model BookingReference {
 enum BookingStatus {
   PENDING
   APPROVED
+  SCHEDULED
+  COMPLETED
   WAITLISTED
   DECLINED
   CANCELLED
