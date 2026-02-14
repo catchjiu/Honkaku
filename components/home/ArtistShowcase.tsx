@@ -1,11 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import Link from "next/link";
-
-const PLACEHOLDER_IMAGE =
-  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80";
+import { ArtistAvatar } from "@/components/ui/ArtistAvatar";
 
 type Artist = {
   id: string;
@@ -28,21 +25,21 @@ export function ArtistShowcase({ artists }: Props) {
             id: "1",
             name: "Artist One",
             specialty: "Traditional & Fine-line",
-            avatar_url: PLACEHOLDER_IMAGE,
+            avatar_url: null,
             slug: "artist-one",
           },
           {
             id: "2",
             name: "Artist Two",
             specialty: "Realism & Blackwork",
-            avatar_url: PLACEHOLDER_IMAGE,
+            avatar_url: null,
             slug: "artist-two",
           },
           {
             id: "3",
             name: "Artist Three",
             specialty: "Japanese & Neo-traditional",
-            avatar_url: PLACEHOLDER_IMAGE,
+            avatar_url: null,
             slug: "artist-three",
           },
         ];
@@ -82,21 +79,11 @@ export function ArtistShowcase({ artists }: Props) {
               <Link href={`/artists/${artist.slug}`} className="block">
                 <div className="relative overflow-hidden bg-card-hover">
                   <div className="aspect-[4/5] overflow-hidden">
-                    {artist.avatar_url ? (
-                      <img
-                        src={artist.avatar_url}
-                        alt={artist.name}
-                        className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-                      />
-                    ) : (
-                      <Image
-                        src={PLACEHOLDER_IMAGE}
-                        alt={artist.name}
-                        width={400}
-                        height={500}
-                        className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-                      />
-                    )}
+                    <ArtistAvatar
+                      src={artist.avatar_url}
+                      alt={artist.name}
+                      className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                    />
                   </div>
                   <div className="border-t border-border bg-background p-6 transition-colors group-hover:bg-card-hover">
                     <h3 className="font-serif text-xl font-medium tracking-tight text-foreground">

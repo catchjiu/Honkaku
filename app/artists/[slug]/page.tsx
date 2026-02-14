@@ -4,6 +4,7 @@ export const dynamic = "force-dynamic";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { GalleryGrid } from "@/components/gallery/GalleryGrid";
+import { ArtistAvatar } from "@/components/ui/ArtistAvatar";
 
 function igHandle(url: string | null): string | null {
   if (!url) return null;
@@ -46,15 +47,15 @@ export default async function ArtistGalleryPage({
       </Link>
 
       <div className="mb-16 flex flex-col gap-8 sm:flex-row sm:items-end sm:gap-12">
-        {artist.avatarUrl && (
-          <div className="h-36 w-36 shrink-0 overflow-hidden bg-card-hover">
-            <img
-              src={artist.avatarUrl}
-              alt={artist.name}
-              className="h-full w-full object-cover"
-            />
-          </div>
-        )}
+        <div className="h-36 w-36 shrink-0 overflow-hidden bg-card-hover">
+          <ArtistAvatar
+            src={artist.avatarUrl}
+            alt={artist.name}
+            width={144}
+            height={144}
+            className="h-full w-full object-cover"
+          />
+        </div>
         <div>
           <h1 className="font-serif text-4xl font-medium tracking-tight text-foreground md:text-5xl">
             {artist.name}

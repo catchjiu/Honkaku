@@ -2,12 +2,9 @@ import { prisma } from "@/lib/prisma";
 
 export const dynamic = "force-dynamic";
 import Link from "next/link";
-import Image from "next/image";
 import { ArtistsPageClient } from "@/components/artists/ArtistsPageClient";
+import { ArtistAvatar } from "@/components/ui/ArtistAvatar";
 import { Section, SectionLabel, SectionTitle } from "@/components/ui";
-
-const PLACEHOLDER =
-  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80";
 
 function igHandle(url: string | null): string | null {
   if (!url) return null;
@@ -50,23 +47,13 @@ export default async function ArtistsPage() {
                 className="group block overflow-hidden bg-card transition-colors hover:bg-card-hover"
               >
                 <div className="relative aspect-[4/5] overflow-hidden">
-                  {artist.avatarUrl ? (
-                    <Image
-                      src={artist.avatarUrl}
-                      alt={artist.name}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                      className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
-                    />
-                  ) : (
-                    <Image
-                      src={PLACEHOLDER}
-                      alt={artist.name}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                      className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
-                    />
-                  )}
+                  <ArtistAvatar
+                    src={artist.avatarUrl}
+                    alt={artist.name}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+                  />
                 </div>
                 <div className="border-t border-border p-6">
                   <h2 className="font-serif text-xl font-medium tracking-tight text-foreground">

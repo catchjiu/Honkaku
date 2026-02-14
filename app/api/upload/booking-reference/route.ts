@@ -1,11 +1,11 @@
 /**
  * API route for booking reference upload.
  * Alternative to Server Action — useful for client-side fetch.
- * Rate limited. Uses GCP when configured, else Supabase.
+ * Rate limited. Uses Cloudinary or GCP when configured.
  */
 
 import { NextRequest, NextResponse } from "next/server";
-import { uploadToGCP, isGCPConfigured } from "@/lib/gcp-storage";
+import { uploadFile, isUploadConfigured } from "@/lib/upload";
 import { rateLimit, getClientIdentifier } from "@/lib/rate-limit";
 
 const UPLOAD_LIMIT = 10;
@@ -31,13 +31,13 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  if (!isGCPConfigured()) {
+  if (!isUploadConfigured()) {
     return NextResponse.json(
       { error: "File upload is not configured." },
       { status: 503 }
     );
   }
-  const result = await uploadToGCP(file, "booking-references");
+  const result = await uploadFile(file, "booking-references");
   if ("error" in result) {
     return NextResponse.json({ error: result.error }, { status: 400 });
   }

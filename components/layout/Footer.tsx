@@ -61,13 +61,13 @@ export function Footer() {
               Connect
             </h4>
             <a
-              href="https://instagram.com"
+              href="https://instagram.com/honkakutattoostudio"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 text-[15px] text-foreground-muted transition-colors hover:text-foreground"
             >
               <Instagram size={18} strokeWidth={1.5} />
-              @honkakutattoo
+              @honkakutattoostudio
             </a>
           </div>
         </div>

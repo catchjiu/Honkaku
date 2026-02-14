@@ -1,7 +1,7 @@
 "use server";
 
 import { headers } from "next/headers";
-import { uploadToGCP, isGCPConfigured } from "@/lib/gcp-storage";
+import { uploadFile, isUploadConfigured } from "@/lib/upload";
 import { rateLimit, getClientIdentifier } from "@/lib/rate-limit";
 
 const UPLOAD_LIMIT = 20; // admin can upload more
@@ -23,13 +23,13 @@ export async function uploadPortfolioImage(
     };
   }
 
-  if (!isGCPConfigured()) {
+  if (!isUploadConfigured()) {
     return {
       error:
-        "GCP Storage is not configured. Set GCP_STORAGE_BUCKET and either: (1) GCP_CLIENT_EMAIL + GCP_PRIVATE_KEY, or (2) run `gcloud auth application-default login` for ADC.",
+        "No storage configured. Add Cloudinary (CLOUDINARY_*) — sign up free at cloudinary.com",
     };
   }
-  const result = await uploadToGCP(file, "portfolio");
+  const result = await uploadFile(file, "portfolio");
   if ("error" in result) return { error: result.error };
   return { url: result.url };
 }

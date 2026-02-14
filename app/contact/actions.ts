@@ -1,7 +1,7 @@
 "use server";
 
 import { headers } from "next/headers";
-import { uploadToGCP, isGCPConfigured } from "@/lib/gcp-storage";
+import { uploadFile, isUploadConfigured } from "@/lib/upload";
 import { rateLimit, getClientIdentifier } from "@/lib/rate-limit";
 import { prisma } from "@/lib/prisma";
 
@@ -25,10 +25,10 @@ export async function uploadBookingReference(
     };
   }
 
-  if (!isGCPConfigured()) {
+  if (!isUploadConfigured()) {
     return { error: "File upload is not configured. Please contact the studio." };
   }
-  const result = await uploadToGCP(file, "booking-references");
+  const result = await uploadFile(file, "booking-references");
   if ("error" in result) return { error: result.error };
   return { url: result.url };
 }

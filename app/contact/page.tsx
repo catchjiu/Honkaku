@@ -53,12 +53,12 @@ export default async function ContactPage() {
               <p className="mt-6 text-[15px] text-foreground-muted">
                 Prefer to reach out directly? DM us on Instagram{" "}
                 <a
-                  href="https://instagram.com/tattookaohsiung"
+                  href="https://instagram.com/honkakutattoostudio"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-accent hover:underline"
                 >
-                  @tattookaohsiung
+                  @honkakutattoostudio
                 </a>
               </p>
             </div>
