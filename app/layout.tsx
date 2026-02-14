@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { DM_Sans, Cormorant_Garamond } from "next/font/google";
+import { DM_Sans, Cormorant_Garamond, Noto_Sans_TC } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -16,6 +16,12 @@ const cormorant = Cormorant_Garamond({
   variable: "--font-serif",
 });
 
+const notoSansTC = Noto_Sans_TC({
+  subsets: ["chinese-traditional", "latin"],
+  weight: ["400", "500"],
+  variable: "--font-cjk",
+});
+
 export const metadata: Metadata = {
   title: "Honkaku Tattoo Studio | Coming Soon",
   description:
@@ -30,7 +36,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${dmSans.variable} ${cormorant.variable} min-h-screen bg-background text-foreground antialiased font-sans`}
+        className={`${dmSans.variable} ${cormorant.variable} ${notoSansTC.variable} min-h-screen bg-background text-foreground antialiased font-sans`}
       >
         <div className="grain-overlay" aria-hidden />
         <Navbar />

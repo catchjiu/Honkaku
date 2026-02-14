@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Instagram } from "lucide-react";
+import { Instagram, MapPin } from "lucide-react";
 
 const footerLinks = [
   { href: "/artists", label: "Artists" },
@@ -60,15 +60,30 @@ export function Footer() {
             <h4 className="mb-6 text-[11px] font-medium tracking-[0.2em] uppercase text-foreground-muted">
               Connect
             </h4>
-            <a
-              href="https://instagram.com/honkakutattoostudio"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 text-[15px] text-foreground-muted transition-colors hover:text-foreground"
-            >
-              <Instagram size={18} strokeWidth={1.5} />
-              @honkakutattoostudio
-            </a>
+            <div className="space-y-4">
+              <a
+                href="https://instagram.com/honkakutattoostudio"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 text-[15px] text-foreground-muted transition-colors hover:text-foreground"
+              >
+                <Instagram size={18} strokeWidth={1.5} />
+                @honkakutattoostudio
+              </a>
+              <p className="flex items-start gap-3 text-[15px] text-foreground-muted">
+                <MapPin size={18} strokeWidth={1.5} className="mt-0.5 shrink-0" />
+                <span
+                  className="font-sans"
+                  style={{
+                    fontFamily:
+                      '"PingFang TC", "Microsoft JhengHei", "Noto Sans TC", "Helvetica Neue", sans-serif',
+                  fontFeatureSettings: '"locl"',
+                }}
+                >
+                  前金區自強一路46號2樓
+                </span>
+              </p>
+            </div>
           </div>
         </div>
 
