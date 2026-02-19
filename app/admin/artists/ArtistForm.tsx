@@ -47,8 +47,8 @@ export function ArtistForm({ artist, onClose }: Props) {
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm">
-      <div className="w-full max-w-lg rounded-md border border-border bg-card p-6">
+    <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overscroll-contain bg-black/70 p-4 backdrop-blur-sm">
+      <div className="my-4 w-full max-w-lg max-h-[90dvh] overflow-y-auto overscroll-contain rounded-md border border-border bg-card p-6 pb-8 sm:my-0 sm:pb-6">
         <div className="mb-6 flex items-center justify-between">
           <h2 className="font-serif text-xl font-medium">
             {isEditing ? "Edit Artist" : "Add Artist"}
@@ -166,17 +166,17 @@ export function ArtistForm({ artist, onClose }: Props) {
             </div>
           </div>
 
-          <div className="flex justify-end gap-2 pt-4">
+          <div className="flex flex-col-reverse gap-3 pt-6 sm:flex-row sm:justify-end sm:gap-2 sm:pt-4">
             <button
               type="button"
               onClick={onClose}
-              className="rounded-md border border-border px-4 py-2 text-sm text-foreground-muted transition-colors hover:bg-border hover:text-foreground"
+              className="min-h-[44px] rounded-md border border-border px-4 py-3 text-sm text-foreground-muted transition-colors hover:bg-border hover:text-foreground sm:py-2"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="rounded-md border border-accent bg-accent-muted px-4 py-2 text-sm font-medium text-accent transition-colors hover:bg-accent hover:text-ivory"
+              className="min-h-[48px] rounded-md border border-accent bg-accent-muted px-4 py-3 text-base font-medium text-accent transition-colors hover:bg-accent hover:text-ivory sm:py-2 sm:text-sm"
             >
               {isEditing ? "Save" : "Create"}
             </button>

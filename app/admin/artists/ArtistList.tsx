@@ -33,9 +33,9 @@ export function ArtistList({ artists }: Props) {
         </p>
         <button
           onClick={() => setShowCreate(true)}
-          className="flex items-center gap-2 rounded-md border border-accent bg-accent-muted px-4 py-2 text-sm font-medium text-accent transition-colors hover:bg-accent hover:text-ivory"
+          className="flex min-h-[48px] w-full items-center justify-center gap-2 rounded-md border border-accent bg-accent-muted px-4 py-3 text-base font-medium text-accent transition-colors hover:bg-accent hover:text-ivory sm:w-auto sm:py-2 sm:text-sm"
         >
-          <Plus size={18} strokeWidth={1.5} />
+          <Plus size={20} strokeWidth={1.5} />
           Add Artist
         </button>
       </div>
