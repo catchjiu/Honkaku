@@ -40,7 +40,87 @@ export function ArtistList({ artists }: Props) {
         </button>
       </div>
 
-      <div className="mt-6 overflow-x-auto rounded-md border border-border">
+      {/* Mobile card layout */}
+      <div className="mt-6 flex flex-col gap-3 md:hidden">
+        {artists.length === 0 ? (
+          <div className="rounded-md border border-border bg-card px-4 py-12 text-center text-foreground-muted">
+            No artists yet. Click &quot;Add Artist&quot; to create one.
+          </div>
+        ) : (
+          artists.map((artist) => (
+            <div
+              key={artist.id}
+              className="rounded-md border border-border bg-card p-4"
+            >
+              <div className="flex items-start gap-3">
+                {artist.avatar_url ? (
+                  <img
+                    src={artist.avatar_url}
+                    alt=""
+                    className="h-12 w-12 shrink-0 rounded-full object-cover"
+                  />
+                ) : (
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-accent-muted font-serif text-sm text-accent">
+                    {artist.name.charAt(0)}
+                  </div>
+                )}
+                <div className="min-w-0 flex-1">
+                  <div className="font-medium text-foreground">{artist.name}</div>
+                  <div className="text-xs text-foreground-muted">/{artist.slug}</div>
+                  <div className="mt-1 text-sm text-foreground-muted">
+                    {artist.specialty || "—"}
+                  </div>
+                  <div className="mt-1">
+                    {artist.ig_handle ? (
+                      <a
+                        href={`https://instagram.com/${artist.ig_handle}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-accent hover:underline"
+                      >
+                        @{artist.ig_handle}
+                      </a>
+                    ) : (
+                      <span className="text-foreground-muted">—</span>
+                    )}
+                  </div>
+                  <div className="mt-3 flex flex-wrap items-center justify-between gap-2">
+                    <span
+                      className={`rounded-full px-2 py-0.5 text-xs ${
+                        artist.is_active
+                          ? "bg-green-500/20 text-green-400"
+                          : "bg-border text-foreground-muted"
+                      }`}
+                    >
+                      {artist.is_active ? "Active" : "Inactive"}
+                    </span>
+                    <div className="flex gap-2">
+                      <button
+                        onClick={() => setEditingArtist(artist)}
+                        className="flex items-center gap-1.5 rounded-md border border-border px-3 py-1.5 text-sm text-foreground-muted transition-colors hover:bg-border hover:text-foreground"
+                      >
+                        <Pencil size={14} strokeWidth={1.5} />
+                        Edit
+                      </button>
+                      <button
+                        onClick={() => handleDelete(artist.id)}
+                        disabled={deletingId === artist.id}
+                        className="flex items-center gap-1.5 rounded-md border border-red-500/50 bg-red-500/10 px-3 py-1.5 text-sm text-red-400 transition-colors hover:bg-red-500/20 disabled:opacity-50"
+                      >
+                        <Trash2 size={14} strokeWidth={1.5} />
+                        Delete
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))
+        )}
+      </div>
+
+      {/* Desktop table layout */}
+      <div className="mt-6 hidden overflow-x-auto rounded-md border border-border md:block">
         <table className="w-full min-w-[600px]">
           <thead>
             <tr className="border-b border-border bg-card">
@@ -130,18 +210,18 @@ export function ArtistList({ artists }: Props) {
                     <div className="flex justify-end gap-2">
                       <button
                         onClick={() => setEditingArtist(artist)}
-                        className="rounded p-2 text-foreground-muted transition-colors hover:bg-border hover:text-foreground"
-                        title="Edit"
+                        className="flex items-center gap-1.5 rounded-md border border-border px-3 py-1.5 text-sm text-foreground-muted transition-colors hover:bg-border hover:text-foreground"
                       >
-                        <Pencil size={16} strokeWidth={1.5} />
+                        <Pencil size={14} strokeWidth={1.5} />
+                        Edit
                       </button>
                       <button
                         onClick={() => handleDelete(artist.id)}
                         disabled={deletingId === artist.id}
-                        className="rounded p-2 text-foreground-muted transition-colors hover:bg-red-500/20 hover:text-red-400 disabled:opacity-50"
-                        title="Delete"
+                        className="flex items-center gap-1.5 rounded-md border border-red-500/50 bg-red-500/10 px-3 py-1.5 text-sm text-red-400 transition-colors hover:bg-red-500/20 disabled:opacity-50"
                       >
-                        <Trash2 size={16} strokeWidth={1.5} />
+                        <Trash2 size={14} strokeWidth={1.5} />
+                        Delete
                       </button>
                     </div>
                   </td>
